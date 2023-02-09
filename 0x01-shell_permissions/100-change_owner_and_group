@@ -1,0 +1,2 @@
+#!/bin/bash/owner
+chmod vincent:staff *
