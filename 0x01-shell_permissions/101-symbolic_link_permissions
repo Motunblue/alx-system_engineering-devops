@@ -1,2 +1,2 @@
 #!/bin/bash
-chown vincent:staff _hello.mgc
+chown vincent:staff __hello.mgc
