@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type p -name "*/" -exec wc {}
+find . -type p -name "*/" -exec wc -lines {}
