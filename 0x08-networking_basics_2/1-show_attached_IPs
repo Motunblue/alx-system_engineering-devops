@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Show all active IPv4 IPs
+ifconfig | grep -Eo "inet\s*([0-9]*\.){3}[0-9]*" | cut -d' ' -f2
+
