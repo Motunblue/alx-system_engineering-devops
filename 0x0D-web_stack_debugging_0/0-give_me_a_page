@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Debug container running apache2 webserver
 
-echo "ServerName localhost" >> /etc/apache2.conf
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
 service apache2 start
 
