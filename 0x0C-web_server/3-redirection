@@ -22,5 +22,5 @@ printf "server {
     }
 }" > /etc/nginx/sites-available/default
 
-service nginx restart
+service nginx start
 
