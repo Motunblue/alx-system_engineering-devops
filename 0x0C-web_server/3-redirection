@@ -5,21 +5,11 @@ apt-get -y update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.html
-printf "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    server_name _;
-
-    root   /var/www/html;
-    index  index.html index.htm index.nginx-debian.html;
-    location / {
-    	     try_files \$uri \$uri/ =404;
-    }
-    location = /redirect_me {
-            return 301 https://github.com/Motunblue;
-    }
-}" > /etc/nginx/sites-available/default
+config="server_name _;\
+    location /redirect_me {\
+            return 301 https://google.com;\
+}"
+sed -i "s/server_name _;/$config/" /etc/nginx/sites-available/default
 
 service nginx start
 
