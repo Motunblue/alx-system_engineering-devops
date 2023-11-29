@@ -5,9 +5,9 @@ apt-get -y update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.html
-config="server_name _;\
-    location /redirect_me {\
-            return 301 https://google.com;\
+config="server_name _;
+    location /redirect_me {
+            return 301 https://google.com;
 }"
 sed -i "s/server_name _;/$config/" /etc/nginx/sites-available/default
 
