@@ -1,5 +1,6 @@
 # Install nginx listening on port 80
 # Get / returns a page that with content hello world
+include stdlib
 
 exec {'install_nginx':
   command  => 'apt-get -y update; apt-get -y install nginx; ufw allow "Nginx HTTP"',
