@@ -17,6 +17,7 @@ file_line { 'redirect':
   line   => 'rewrite ^/redirect_me https://google.com permanent;',
 }
 
-exec { 'start_nginx':
-  command => 'service nginx start',
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
