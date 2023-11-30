@@ -7,25 +7,18 @@ ufw allow 'Nginx HTTP'
 echo 'Hello World!' > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
-printf "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+sed -i '/server_name _;/r /dev/stdin' /etc/nginx/sites-available/default <<EOF
 
-    server_name _;
+    	location /redirect_me {
+            	 return 301 https://google.com;
+	}
 
-    root   /var/www/html;
-    index  index.html;
-    location /redirect_me {
-            return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-    error_page 404 /404.html;
-    location = /404.html {
-    	     root /var/www/html;
-    	     internal;
-    }
-
-}" > /etc/nginx/sites-available/default
+    	error_page 404 /404.html;
+    	location = /404.html {
+		 root /var/www/html;
+		 internal;
+    	}     
+EOF
 
 service nginx restart
 
