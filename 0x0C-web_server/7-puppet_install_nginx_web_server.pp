@@ -1,8 +1,7 @@
 # Install nginx listening on port 80
 # Get / returns a page that with content hello world
-include stdlib
 
-exec {'install_nginx':
+exec { 'install_nginx':
   command  => 'apt-get -y update; apt-get -y install nginx; ufw allow "Nginx HTTP"',
 }
 
@@ -11,7 +10,7 @@ file { '/var/www/html/index.html':
   content => 'Hello World!',
 }
 
-file_line {'redirect':
+file_line { 'redirect':
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
   after  => 'server_name _;',
@@ -19,5 +18,5 @@ file_line {'redirect':
 }
 
 exec { 'start_nginx':
-  command => 'service nginx start'
+  command => 'service nginx start',
 }
