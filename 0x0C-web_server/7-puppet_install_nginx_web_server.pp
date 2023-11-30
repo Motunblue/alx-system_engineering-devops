@@ -1,8 +1,8 @@
 # Install nginx listening on port 80
 # Get / returns a page that with content hello world
 
-exec { 'install_nginx':
-  command  => 'apt-get -y update; apt-get -y install nginx; ufw allow "Nginx HTTP"',
+package { 'nginx':
+  ensure => installed,
 }
 
 file { '/var/www/html/index.html':
