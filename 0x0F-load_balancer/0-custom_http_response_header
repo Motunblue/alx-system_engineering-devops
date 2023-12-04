@@ -22,4 +22,4 @@ sed -i '/server_name _;/r /dev/stdin' /etc/nginx/sites-available/default <<EOF
 
 EOF
 
-service restart nginx
+service nginx start
