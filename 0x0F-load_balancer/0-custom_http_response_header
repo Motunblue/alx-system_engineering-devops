@@ -3,7 +3,7 @@
 
 sed -i '/server_name _;/r /dev/stdin' /etc/nginx/sites-available/default <<EOF
 
-    	add_header x-Served-By "$HOSTNAME"
+    	add_header x-Served-By $(hostname);
 
 EOF
 
