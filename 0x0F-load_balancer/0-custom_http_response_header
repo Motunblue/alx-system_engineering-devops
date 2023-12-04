@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Add a custome Nginx response header
+
+sed -i '/server_name _;/r /dev/stdin' /etc/nginx/sites-available/default <<EOF
+
+    add_header x-Served-By $hostname
+
+EOF
+
+service restart nginx
