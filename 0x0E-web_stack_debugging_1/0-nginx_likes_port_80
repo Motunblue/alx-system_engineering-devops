@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Find waht is keeping Ngnix from listening on port 80
+
+sudo fuser -k 80/tcp
+service restart nginx
+
