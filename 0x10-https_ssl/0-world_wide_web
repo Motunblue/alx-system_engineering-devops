@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#display information about a subdomain
+
+function domain_info() {
+
+	 addr=$(dig +short $2.$1)
+	 record=$(dig $2.$1 | awk '/ANSWER SECTION/ {getline; print $4}')
+	 echo "The subdomain $2 is a $record record and points to $addr"
+
+}
+
+if [ "$#" == 1 ]; then
+     subdomains=("www" "lb-01" "web-01" "web-02")
+     for sub in "${subdomains[@]}"; do
+     	 domain_info "$1" "$sub"
+     done
+elif [ "$#" == 2 ]; then
+     domain_information "$1" "$2"
+fi
