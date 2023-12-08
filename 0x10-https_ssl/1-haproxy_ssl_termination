@@ -20,9 +20,6 @@ defaults
 frontend https
 	 bind *:80
 	 mode http
-	 default_backend web-backend
-
-frontend https
 	 bind *:443 ssl crt /etc/haproxy/certs/www.motunrayo.tech.pem
 	 redirect scheme https if !{ ssl_fc }
 	 default_backend web-backend
