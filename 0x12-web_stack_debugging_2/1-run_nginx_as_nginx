@@ -2,9 +2,6 @@
 #Run nginx as nginx user
 
 
-chown -R nginx:nginx /etc/nginx
-chown -R nginx:nginx /var/lib/nginx
-
 sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
 sed -i "s/listen 80;/listen 8080;/g" /etc/nginx/sites-available/default
 
