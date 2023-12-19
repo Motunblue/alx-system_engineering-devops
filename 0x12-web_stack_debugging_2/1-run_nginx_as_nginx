@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #Run nginx as nginx user
 
-# Create the nginx user if it doesn't exist
-id -u nginx &>/dev/null || useradd -r nginx
 
 chown -R nginx:nginx /etc/nginx
 chown -R nginx:nginx /var/lib/nginx
