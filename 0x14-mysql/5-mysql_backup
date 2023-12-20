@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Create a compressed archive of a database
+
+mysqldump --all-databases -u root --password="$1" > backup.sql
+
+file_name="$(date +"%d-%m-%Y").tar.gz"
+tar -cvzf "$file_name" backup.sql
