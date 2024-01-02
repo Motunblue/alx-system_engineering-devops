@@ -12,17 +12,11 @@ if __name__ == "__main__":
     res = requests.get("{}users/{}".format(url, argv[1]))
     name = res.json().get("name")
 
-    res = requests.get("{}todos/".format(url))
+    res = requests.get("{}todos/".format(url), params={"userId": argv[1]})
     tasks = res.json()
-    task_count = 0
-    completed = 0
-    task_title = []
-    for task in tasks:
-        if task.get("userId") == int(argv[1]):
-            task_count += 1
-            if task.get("completed") is True:
-                completed += 1
-                task_title.append(task.get("title"))
+    task_count = len(tasks)
+    task_title = [t.get("title") for t in tasks if t.get("completed") is True]
+    completed = len(task_title)
 
     print("Employee {} is done with tasks({}/{}):\n\t".format(
         name, completed, task_count),
