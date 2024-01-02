@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-"""Get information about employee ID"""
-from sys import argv
 import requests
+from sys import argv
 
+
+"""Get information about employee ID
+    argv[1]: employee id
+"""
 
 url = "https://jsonplaceholder.typicode.com/"
 
