@@ -4,19 +4,21 @@
 """
 import requests
 from sys import argv
+import csv
 
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
 
     res = requests.get("{}users/{}".format(url, argv[1]))
-    name = res.json().get("name")
+    name = res.json().get("username")
 
     tasks = requests.get(f"{url}todos", params={"userId": argv[1]}).json()
-    task_count = len(tasks)
-    task_title = [t.get("title") for t in tasks if t.get("completed") is True]
-    completed = len(task_title)
 
-    print("Employee {} is done with tasks({}/{}):\n\t".format(
-        name, completed, task_count),
-        "\n\t ".join(task_title))
+    with open(f"{argv[1]}.csv", mode='w', newline='') as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        [
+            writer.writerow(
+                [t.get("userId"), name, t.get("completed"), t.get("title")]
+                ) for t in tasks
+        ]
