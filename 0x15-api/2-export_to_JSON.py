@@ -2,9 +2,9 @@
 """Get information about employee ID
     argv[1]: employee id
 """
+import json
 import requests
 from sys import argv
-import json
 
 
 if __name__ == "__main__":
