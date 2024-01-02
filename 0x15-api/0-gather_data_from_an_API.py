@@ -12,7 +12,7 @@ if __name__ == "__main__":
     res = requests.get("{}users/{}".format(url, argv[1]))
     name = res.json().get("name")
 
-    tasks = requests.get("{}todos/".format(url), params={"userId": argv[1]}).json()
+    tasks = requests.get(f"{url}todos", params={"userId": argv[1]}).json()
     task_count = len(tasks)
     task_title = [t.get("title") for t in tasks if t.get("completed") is True]
     completed = len(task_title)
@@ -20,3 +20,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):\n\t".format(
         name, completed, task_count),
         "\n\t ".join(task_title))
+
