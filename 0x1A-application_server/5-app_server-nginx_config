@@ -8,6 +8,18 @@ server {
                 proxy_pass http://localhost:5000/;
         }
 
+	location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+                proxy_pass http://localhost:5001;
+        }
+
+	location /api/ {
+                proxy_pass http://localhost:5002;
+        }
+
+	location / {
+                proxy_pass http://localhost:5003;
+        }
+
 	add_header X-Served-By 271647-web-01;
 
 	error_page 404 /404.html;
