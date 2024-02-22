@@ -6,7 +6,7 @@ exec { 'replace_ulimit':
 }
 
 exec { 'restart_nginx':
-  command  => 'sudo service nginx restart',
+  command     => 'sudo service nginx restart',
   refreshonly => true,
 }
 
