@@ -6,7 +6,8 @@ import requests
 def number_of_subscribers(subreddit):
     """Requery reddit api for number of subscibers"""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    response = requests.get(url)
+    headers = {"User-Agent": "(Windows NT 10.0; Win64; x64)"}
+    response = requests.get(url, headers=headers, allow_redirect=False)
     if response.status_code == 404:
         return 0
     result = response.json()
